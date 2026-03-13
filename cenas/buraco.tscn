@@ -1,0 +1,17 @@
+[gd_scene load_steps=3 format=3 uid="uid://bg0jva1md751i"]
+
+[ext_resource type="Script" uid="uid://degnarrmj886c" path="res://scripts/buraco.gd" id="1_ci7s5"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_plnhl"]
+size = Vector3(10, 1, 20)
+
+[node name="buraco" type="Node3D"]
+script = ExtResource("1_ci7s5")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("BoxShape3D_plnhl")
+debug_color = Color(0, 0, 0, 0.41960785)
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

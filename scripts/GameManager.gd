@@ -1,0 +1,43 @@
+extends Node
+class_name GameManager2
+static var Gamemanagerinscene
+var vida_atual: int = 3
+var vida_maxima: int = 3
+var saveposplayer: Vector3
+var playernode: Node3D
+var pontos: int = 1
+var jogo_iniciado: bool = false
+
+# Called when the node enters the scene tree for the first time.
+func _ready() -> void:
+	if jogo_iniciado == true:
+		vida_atual = vida_maxima
+		Gamemanagerinscene = self
+		playernode = get_tree().get_first_node_in_group("player")
+		saveposplayer = playernode.global_position
+	
+	#vida_atual = vida_maxima
+	#Gamemanagerinscene = self
+	#playernode = get_tree().get_first_node_in_group("player")
+	#saveposplayer = playernode.global_position
+	pass # Replace with function body.
+
+# Called every frame. 'delta' is the elapsed time since the previous frame.
+func _process(delta: float) -> void:
+	pass
+func addvida(quantidade: int):
+	
+	if vida_atual <= vida_maxima:
+		vida_atual += 1
+	
+	pass
+
+func addponto(quantidade: int):
+	pontos += 1
+	pass
+
+func levardano(quantidade: int):
+	vida_atual -= 1
+	if vida_atual <= 0:
+		pass
+	pass

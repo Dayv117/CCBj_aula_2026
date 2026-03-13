@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://rae8eqege0qg"]
+
+[ext_resource type="Script" uid="uid://px5u63d6k4io" path="res://scripts/moeda.gd" id="1_5k251"]
+
+[sub_resource type="SphereMesh" id="SphereMesh_u3d6r"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_5k251"]
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ld1q8"]
+radius = 0.358
+
+[node name="moeda" type="RigidBody3D"]
+collision_mask = 129
+script = ExtResource("1_5k251")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Sprite3D"]
+mesh = SubResource("SphereMesh_u3d6r")
+skeleton = NodePath("")
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 3
+collision_mask = 3
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_5k251")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_ld1q8")
+
+[connection signal="area_entered" from="Area3D" to="." method="Coletar"]

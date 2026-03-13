@@ -1,0 +1,36 @@
+[gd_scene load_steps=3 format=3 uid="uid://c7n8qvn0ivuvp"]
+
+[ext_resource type="Script" uid="uid://b2majttidrxyy" path="res://scripts/hud.gd" id="1_8alo0"]
+[ext_resource type="Texture2D" uid="uid://bfo52gn83x4rl" path="res://assets/vida2.png" id="2_8alo0"]
+
+[node name="hud" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_8alo0")
+metadata/_edit_use_anchors_ = true
+
+[node name="HBoxContainer" type="HBoxContainer" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+grow_horizontal = 2
+metadata/_edit_use_anchors_ = true
+
+[node name="TextureRect" type="TextureRect" parent="HBoxContainer"]
+custom_minimum_size = Vector2(60, 20)
+layout_mode = 2
+texture = ExtResource("2_8alo0")
+expand_mode = 1
+stretch_mode = 1
+metadata/_edit_use_anchors_ = true
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 1.0
+offset_top = 25.0
+offset_right = 41.0
+offset_bottom = 48.0

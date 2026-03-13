@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://6vx1akn08kd1"]
+
+[ext_resource type="Script" uid="uid://frdp0ko58rtn" path="res://scripts/saveload.gd" id="1_dkudx"]
+
+[node name="saveload" type="Node"]
+script = ExtResource("1_dkudx")
