@@ -1,4 +1,4 @@
-[gd_scene load_steps=104 format=4 uid="uid://l0a8x3escq2o"]
+[gd_scene load_steps=106 format=4 uid="uid://l0a8x3escq2o"]
 
 [ext_resource type="Texture2D" uid="uid://b7y38q8vpt7w6" path="res://assets/3D/Props/Props_EnviroTex1.png" id="1_2novb"]
 [ext_resource type="PackedScene" uid="uid://hgsikppiigs8" path="res://cenas/character_body_3d.tscn" id="2_ln3fj"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://rae8eqege0qg" path="res://cenas/moeda.tscn" id="9_i5d5d"]
 [ext_resource type="PackedScene" uid="uid://c7n8qvn0ivuvp" path="res://cenas/hud.tscn" id="10_pfgfe"]
 [ext_resource type="Script" uid="uid://0ieu0ypm7mlc" path="res://scripts/platform_2.gd" id="11_esbpk"]
+[ext_resource type="PackedScene" uid="uid://bg0jva1md751i" path="res://cenas/buraco.tscn" id="12_puycu"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmysq"]
 resource_name = "EnviromentTex"
@@ -1592,6 +1593,8 @@ _data = {
 height = 4.893
 radius = 6.47
 
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_puycu"]
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_honqu"]
 _surfaces = [{
 "aabb": AABB(-6.05837, -0.456966, -15.0778, 12.4839, 2.84161, 41.8529),
@@ -2180,7 +2183,8 @@ shape = SubResource("CylinderShape3D_i5d5d")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2628222, -1.9073486e-06, -14.674678)
 
 [node name="moeda" parent="." instance=ExtResource("9_i5d5d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0351194, 17.72977, -18.439579)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0351194, 6.410988, -18.439579)
+physics_material_override = SubResource("PhysicsMaterial_puycu")
 
 [node name="Cenario2" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.197812, -1.1908565, -9.612888)
@@ -2250,6 +2254,9 @@ autoplay = "plat_horizontal"
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.081612, 11, 2.49564)
 mesh = SubResource("ArrayMesh_vhwsp")
 skeleton = NodePath("")
+
+[node name="buraco" parent="." instance=ExtResource("12_puycu")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 11.499469, -13.347042, -19.749027)
 
 [connection signal="area_entered" from="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/Area3D" to="criatura" method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/Area3D" to="criatura" method="_on_area_3d_body_entered"]

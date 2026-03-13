@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://degnarrmj886c" path="res://scripts/buraco.gd" id="1_ci7s5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_plnhl"]
-size = Vector3(10, 1, 20)
+size = Vector3(100, 1, 100)
 
 [node name="buraco" type="Node3D"]
 script = ExtResource("1_ci7s5")

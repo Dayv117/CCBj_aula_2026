@@ -14,4 +14,5 @@ func _process(delta: float) -> void:
 func _on_area_3d_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		GameManager.levardano(1)
+		body.global_position = GameManager2.Gamemanagerinscene.saveposplayer
 	pass # Replace with function body.
