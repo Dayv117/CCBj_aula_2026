@@ -1,4 +1,4 @@
-[gd_scene load_steps=130 format=4 uid="uid://l0a8x3escq2o"]
+[gd_scene load_steps=134 format=4 uid="uid://l0a8x3escq2o"]
 
 [ext_resource type="Texture2D" uid="uid://b7y38q8vpt7w6" path="res://assets/3D/Props/Props_EnviroTex1.png" id="1_2novb"]
 [ext_resource type="PackedScene" uid="uid://hgsikppiigs8" path="res://cenas/character_body_3d.tscn" id="2_ln3fj"]
@@ -16,6 +16,8 @@
 [ext_resource type="Script" uid="uid://b5mbkjoifjxp3" path="res://scripts/coquinho.gd" id="13_843sb"]
 [ext_resource type="PackedScene" uid="uid://ecl72y6jktpy" path="res://cenas/projetil.tscn" id="14_dww6m"]
 [ext_resource type="PackedScene" uid="uid://cp1h0ls8o4826" path="res://cenas/coracao.tscn" id="16_rdmaj"]
+[ext_resource type="Script" uid="uid://651aob8jy43g" path="res://cenas/camera_man.gd" id="17_3aakq"]
+[ext_resource type="Script" uid="uid://0482cpupei3b" path="res://scripts/muroativador.gd" id="18_uhglm"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmysq"]
 resource_name = "EnviromentTex"
@@ -2113,6 +2115,11 @@ material = SubResource("StandardMaterial3D_3aakq")
 radius = 0.2
 height = 1.0
 
+[sub_resource type="SphereShape3D" id="SphereShape3D_uhglm"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_3ish3"]
+size = Vector3(1, 20, 20)
+
 [node name="mundo" type="Node3D"]
 
 [node name="Props" type="Node3D" parent="."]
@@ -2403,7 +2410,7 @@ spring_length = 13.225
 transform = Transform3D(1.0000001, 0, 0, 0, 0.9999999, 0, 0, 0, 0.9999999, 0, 0, 0)
 
 [node name="lobaoo" type="Node3D" parent="criatura/Path3D/PathFollow3D/SpringArm3D/pivot"]
-transform = Transform3D(0.48725298, -0.50926584, -0.016052289, 0.015856924, 0.03735653, -0.7038306, 0.5092725, 0.48608345, 0.037272993, -0.011761069, 1.3466682, -1.4971024)
+transform = Transform3D(0.48725298, -0.5092659, -0.016052289, 0.015856924, 0.037356533, -0.7038306, 0.5092725, 0.48608348, 0.037272993, -0.011761069, 1.3466682, -1.4971024)
 
 [node name="Armature" type="Node3D" parent="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/lobaoo"]
 transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, 0, 0, 0)
@@ -2862,9 +2869,33 @@ mesh = SubResource("CapsuleMesh_uhglm")
 [node name="coracao2" parent="." instance=ExtResource("16_rdmaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.019283, 23.909468, -15.701233)
 
+[node name="CameraMan" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 43.404316, 3.9377632)
+script = ExtResource("17_3aakq")
+
+[node name="SpringArm3D" type="SpringArm3D" parent="CameraMan"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05777645)
+shape = SubResource("SphereShape3D_uhglm")
+spring_length = 2.0
+
+[node name="Offseter" type="Node3D" parent="CameraMan/SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.1326938)
+
+[node name="Piv" type="Node3D" parent="CameraMan/SpringArm3D/Offseter"]
+
+[node name="Camera3D" type="Camera3D" parent="CameraMan/SpringArm3D/Offseter/Piv"]
+
+[node name="Area3D" type="Area3D" parent="."]
+script = ExtResource("18_uhglm")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(0.11478111, 0, -0.99339086, 0, 1, 0, 0.99339086, 0, 0.11478111, 0, 0, -33.16472)
+shape = SubResource("BoxShape3D_3ish3")
+
 [connection signal="area_entered" from="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/Area3D" to="criatura" method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/Area3D" to="criatura" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/Area3D" to="criatura" method="_on_area_3d_body_exited"]
 [connection signal="body_entered" from="plataformas/Platform2/Area3D" to="plataformas/Platform2" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="plataformas/Platform2/Area3D" to="plataformas/Platform2" method="_on_area_3d_body_exited"]
 [connection signal="area_entered" from="coquinho/levardano" to="coquinho" method="_on_levardano_area_entered"]
+[connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

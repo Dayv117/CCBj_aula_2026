@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=4 uid="uid://hgsikppiigs8"]
+[gd_scene load_steps=24 format=4 uid="uid://hgsikppiigs8"]
 
 [ext_resource type="Script" uid="uid://cjbljh68e1cqi" path="res://scripts/character_body_3d.gd" id="1_8574k"]
 [ext_resource type="Texture2D" uid="uid://c0ka8cpfptw0j" path="res://assets/3D/Modelos/buddybuddy_Buddytex.png" id="1_bqi7g"]
@@ -1867,16 +1867,9 @@ albedo_texture = ExtResource("3_6gmvs")
 [sub_resource type="PlaneMesh" id="PlaneMesh_a23vc"]
 material = SubResource("StandardMaterial3D_hnnuc")
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_6gmvs"]
-transparency = 1
-albedo_color = Color(1, 1, 1, 0)
-
-[sub_resource type="CylinderMesh" id="CylinderMesh_o48gv"]
-material = SubResource("StandardMaterial3D_6gmvs")
-top_radius = 4.5
-bottom_radius = 2.0
-height = 3.0
-cap_bottom = false
+[sub_resource type="TorusMesh" id="TorusMesh_6gmvs"]
+inner_radius = 6.0
+outer_radius = 5.0
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Persist", "player"]]
 collision_layer = 3
@@ -2053,10 +2046,7 @@ scale_amount_max = 0.4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="piv/Areaataque"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4419513, 0)
-mesh = SubResource("CylinderMesh_o48gv")
-
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, -2.91588e-08, 1.72397e-07, 0, 0.985996, 0.166769, -1.74846e-07, -0.166769, 0.985996, 0, 5.53558, 7.22469)
+mesh = SubResource("TorusMesh_6gmvs")
 
 [node name="Area3D" type="Area3D" parent="."]
 
