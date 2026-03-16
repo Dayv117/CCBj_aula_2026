@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cegr4nekdfq4l"
-path.s3tc="res://.godot/imported/images.jpg-60e4c03fa0b3364957168a3ce7c315c3.s3tc.ctex"
+uid="uid://ch611o57s2n7x"
+path.s3tc="res://.godot/imported/coracao_1294.png-83f3d7794689090439ca3af9fb9e01ac.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "4072f2cadb84705ba7868fcf997b231b"
+}
 
 [deps]
 
-source_file="res://assets/3D/Props/images.jpg"
-dest_files=["res://.godot/imported/images.jpg-60e4c03fa0b3364957168a3ce7c315c3.s3tc.ctex"]
+source_file="res://assets/3D/coracao_1294.png"
+dest_files=["res://.godot/imported/coracao_1294.png-83f3d7794689090439ca3af9fb9e01ac.s3tc.ctex"]
 
 [params]
 

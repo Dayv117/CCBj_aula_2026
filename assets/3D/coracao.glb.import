@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://balugxnp3xf8j"
-path="res://.godot/imported/Props.glb-23201bfb5248cc44824748097cf36ff4.scn"
+uid="uid://4tk4swtf4sta"
+path="res://.godot/imported/coracao.glb-c15835380a5ecb659371ace65a287b25.scn"
 
 [deps]
 
-source_file="res://assets/3D/Props/Props.glb"
-dest_files=["res://.godot/imported/Props.glb-23201bfb5248cc44824748097cf36ff4.scn"]
+source_file="res://assets/3D/coracao.glb"
+dest_files=["res://.godot/imported/coracao.glb-c15835380a5ecb659371ace65a287b25.scn"]
 
 [params]
 

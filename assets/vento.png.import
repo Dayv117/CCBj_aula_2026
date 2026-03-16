@@ -2,8 +2,8 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cegr4nekdfq4l"
-path.s3tc="res://.godot/imported/images.jpg-60e4c03fa0b3364957168a3ce7c315c3.s3tc.ctex"
+uid="uid://rw52ffmw0b8y"
+path.s3tc="res://.godot/imported/vento.png-45a5cb9661f455e542837805fb9602fc.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
@@ -11,8 +11,8 @@ metadata={
 
 [deps]
 
-source_file="res://assets/3D/Props/images.jpg"
-dest_files=["res://.godot/imported/images.jpg-60e4c03fa0b3364957168a3ce7c315c3.s3tc.ctex"]
+source_file="res://assets/vento.png"
+dest_files=["res://.godot/imported/vento.png-45a5cb9661f455e542837805fb9602fc.s3tc.ctex"]
 
 [params]
 

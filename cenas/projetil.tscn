@@ -1,0 +1,30 @@
+[gd_scene load_steps=6 format=3 uid="uid://ecl72y6jktpy"]
+
+[ext_resource type="Script" uid="uid://n3et46mq7ikt" path="res://scripts/projetil.gd" id="1_wj5pp"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_o7030"]
+albedo_color = Color(0.21930024, 0.12834755, 0.02090316, 1)
+
+[sub_resource type="SphereMesh" id="SphereMesh_wj5pp"]
+material = SubResource("StandardMaterial3D_o7030")
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_j4buw"]
+radius = 0.6
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_wj5pp"]
+
+[node name="projetil" type="CharacterBody3D"]
+script = ExtResource("1_wj5pp")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_wj5pp")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+shape = SubResource("SphereShape3D_j4buw")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("SphereShape3D_wj5pp")
+
+[connection signal="body_entered" from="Area3D" to="." method="_on_area_3d_body_entered"]

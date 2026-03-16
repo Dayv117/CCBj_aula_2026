@@ -2,17 +2,20 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cegr4nekdfq4l"
-path.s3tc="res://.godot/imported/images.jpg-60e4c03fa0b3364957168a3ce7c315c3.s3tc.ctex"
+uid="uid://bnfg33cg0m41s"
+path.s3tc="res://.godot/imported/coquinho_36222.png-53765ff5fc6d086796bb9fc32e4d6694.s3tc.ctex"
 metadata={
 "imported_formats": ["s3tc_bptc"],
 "vram_texture": true
 }
+generator_parameters={
+"md5": "c7922f95ac10a29702a598ce8b2c5a16"
+}
 
 [deps]
 
-source_file="res://assets/3D/Props/images.jpg"
-dest_files=["res://.godot/imported/images.jpg-60e4c03fa0b3364957168a3ce7c315c3.s3tc.ctex"]
+source_file="res://assets/3D/coquinho_36222.png"
+dest_files=["res://.godot/imported/coquinho_36222.png-53765ff5fc6d086796bb9fc32e4d6694.s3tc.ctex"]
 
 [params]
 
