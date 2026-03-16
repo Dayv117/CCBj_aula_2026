@@ -10,6 +10,7 @@ func _ready() -> void:
 
 func _ao_corpo_entrar(body: Node3D):
 	if body.is_in_group("player"):
+		
 		coletar()
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func coletar():
