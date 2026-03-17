@@ -2867,11 +2867,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.722845, 0)
 mesh = SubResource("CapsuleMesh_uhglm")
 
 [node name="coracao2" parent="." instance=ExtResource("16_rdmaj")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 40.019283, 23.909468, -15.701233)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.5886688, 4.9872494, -141.15195)
 
-[node name="CameraMan" type="Node3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 43.404316, 3.9377632)
+[node name="CameraMan" type="Node3D" parent="." node_paths=PackedStringArray("player")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.888107, -58.961456)
 script = ExtResource("17_3aakq")
+player = NodePath("../CharacterBody3D")
+vel = 8.0
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraMan"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05777645)
@@ -2879,7 +2881,7 @@ shape = SubResource("SphereShape3D_uhglm")
 spring_length = 2.0
 
 [node name="Offseter" type="Node3D" parent="CameraMan/SpringArm3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 2.1326938)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 3.6232677)
 
 [node name="Piv" type="Node3D" parent="CameraMan/SpringArm3D/Offseter"]
 
