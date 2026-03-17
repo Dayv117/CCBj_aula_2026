@@ -1,4 +1,4 @@
-[gd_scene load_steps=132 format=4 uid="uid://l0a8x3escq2o"]
+[gd_scene load_steps=141 format=4 uid="uid://l0a8x3escq2o"]
 
 [ext_resource type="Texture2D" uid="uid://b7y38q8vpt7w6" path="res://assets/3D/Props/Props_EnviroTex1.png" id="1_2novb"]
 [ext_resource type="PackedScene" uid="uid://hgsikppiigs8" path="res://cenas/character_body_3d.tscn" id="2_ln3fj"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://rae8eqege0qg" path="res://cenas/moeda.tscn" id="9_i5d5d"]
 [ext_resource type="PackedScene" uid="uid://c7n8qvn0ivuvp" path="res://cenas/hud.tscn" id="10_pfgfe"]
 [ext_resource type="Script" uid="uid://0ieu0ypm7mlc" path="res://scripts/platform_2.gd" id="11_esbpk"]
+[ext_resource type="Script" uid="uid://ctxgiqa1hqrxe" path="res://scripts/platforma_decay.gd" id="12_3ish3"]
 [ext_resource type="PackedScene" uid="uid://bg0jva1md751i" path="res://cenas/buraco.tscn" id="12_puycu"]
 [ext_resource type="Texture2D" uid="uid://bnfg33cg0m41s" path="res://assets/3D/coquinho_36222.png" id="13_8iuxu"]
 [ext_resource type="Script" uid="uid://b5mbkjoifjxp3" path="res://scripts/coquinho.gd" id="13_843sb"]
@@ -1676,6 +1677,149 @@ data = PackedVector3Array(0.0927, 3.1968, 0.1103, 1.5137, 3.1887999, 1.1876, 1.7
 [sub_resource type="BoxShape3D" id="BoxShape3D_puycu"]
 size = Vector3(4, 1, 3)
 
+[sub_resource type="Animation" id="Animation_uhglm"]
+resource_name = "plat_mov"
+length = 10.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0.03333342, 1.2, 4.1, 5, 8.766666, 9.933333),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.197812, 0, -31.0574), Vector3(-0.197812, 0, -31.0574), Vector3(-0.19781208, 0, -59.548264), Vector3(-0.19781208, 0, -59.548264), Vector3(-0.197812, 0, -31.0574), Vector3(-0.197812, 0, -31.0574)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Platforma3mov:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1.1, 4.1, 5.0333333, 8.7, 9.8),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.19781208, 0, -85.4778), Vector3(-0.19781208, 0, -85.4778), Vector3(-0.19781208, 0, -115.47099), Vector3(-0.19781208, 0, -115.47099), Vector3(-0.19781208, 0, -85.4778), Vector3(-0.19781208, 0, -85.4778)]
+}
+
+[sub_resource type="Animation" id="Animation_3ish3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.197812, 0, -31.0574)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Platforma3mov:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.19781208, 0, -115.47099)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_l6ea4"]
+_data = {
+&"RESET": SubResource("Animation_3ish3"),
+&"plat_mov": SubResource("Animation_uhglm")
+}
+
+[sub_resource type="Animation" id="Animation_l6ea4"]
+resource_name = "aparecendo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1)]
+}
+
+[sub_resource type="Animation" id="Animation_4vauu"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1, 1, 1)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.007265568, 0, -146.09741)]
+}
+
+[sub_resource type="Animation" id="Animation_7447s"]
+resource_name = "caindo"
+length = 5.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.26666668, 0.53333336, 0.8, 1.0666667, 1.3333334, 1.6000001, 1.8666668, 2.1333334, 2.4, 2.6666667, 2.9333334, 3.2, 3.466667, 3.7333333, 3.9666662, 4.233333, 4.4999995),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(-0.007265568, 0, -146.09741), Vector3(-0.6873498, 0, -146.09741), Vector3(0.63935995, 0, -146.09741), Vector3(-0.007265568, 0, -146.09741), Vector3(-0.6873498, 0, -146.09741), Vector3(0.63935995, 0, -146.09741), Vector3(-0.007265568, 0, -146.09741), Vector3(-0.6873498, 0, -146.09741), Vector3(0.63935995, 0, -146.09741), Vector3(-0.007265568, 0, -146.09741), Vector3(-0.6873498, 0, -146.09741), Vector3(0.63935995, 0, -146.09741), Vector3(-0.007265568, 0, -146.09741), Vector3(-0.6873498, 0, -146.09741), Vector3(0.63935995, 0, -146.09741), Vector3(-0.007265568, 0, -146.09741), Vector3(-0.6873498, 0, -146.09741), Vector3(0.63935995, 0, -146.09741)]
+}
+
+[sub_resource type="Animation" id="Animation_gerfo"]
+resource_name = "sumindo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(1, 1, 1), Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_lgx3y"]
+_data = {
+&"RESET": SubResource("Animation_4vauu"),
+&"aparecendo": SubResource("Animation_l6ea4"),
+&"caindo": SubResource("Animation_7447s"),
+&"sumindo": SubResource("Animation_gerfo")
+}
+
 [sub_resource type="ArrayMesh" id="ArrayMesh_uaqkp"]
 _surfaces = [{
 "aabb": AABB(-5.1061, 0, -5.07769, 10.1944, 1.92277, 10.2166),
@@ -2523,7 +2667,7 @@ shape = SubResource("CylinderShape3D_i5d5d")
 [node name="saveload" parent="." instance=ExtResource("6_bo0jt")]
 
 [node name="checkpoint" parent="." instance=ExtResource("7_wo13f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2628222, -1.9073486e-06, -95.07935)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2628222, -1.9073486e-06, -203.1518)
 
 [node name="moeda" parent="." instance=ExtResource("9_i5d5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0351194, 6.410988, -18.439579)
@@ -2587,22 +2731,52 @@ shape = SubResource("ConcavePolygonShape3D_pfgfe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
 shape = SubResource("BoxShape3D_puycu")
 
-[node name="Platformafixa" type="MeshInstance3D" parent="plataformas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.197812, 0, -31.0574)
+[node name="AnimationPlayer_plat_mov" type="AnimationPlayer" parent="plataformas/Platform2"]
+libraries = {
+&"": SubResource("AnimationLibrary_l6ea4")
+}
+autoplay = "plat_mov"
+
+[node name="Platforma3mov" type="MeshInstance3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.19781208, 0, -115.47099)
 layers = 129
 mesh = SubResource("ArrayMesh_7oclo")
 skeleton = NodePath("")
+script = ExtResource("11_esbpk")
 
-[node name="StaticBody3D" type="StaticBody3D" parent="plataformas/Platformafixa"]
+[node name="StaticBody3D" type="StaticBody3D" parent="plataformas/Platforma3mov"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platformafixa/StaticBody3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma3mov/StaticBody3D"]
 shape = SubResource("ConcavePolygonShape3D_pfgfe")
 
-[node name="Area3D" type="Area3D" parent="plataformas/Platformafixa"]
+[node name="Area3D" type="Area3D" parent="plataformas/Platforma3mov"]
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platformafixa/Area3D"]
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma3mov/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
 shape = SubResource("BoxShape3D_puycu")
+
+[node name="Platforma4decay" type="MeshInstance3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007265568, 0, -146.09741)
+layers = 129
+mesh = SubResource("ArrayMesh_7oclo")
+skeleton = NodePath("")
+script = ExtResource("12_3ish3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="plataformas/Platforma4decay"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pfgfe")
+
+[node name="Area3D" type="Area3D" parent="plataformas/Platforma4decay"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
+shape = SubResource("BoxShape3D_puycu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plataformas/Platforma4decay"]
+libraries = {
+&"": SubResource("AnimationLibrary_lgx3y")
+}
 
 [node name="Morro1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.081612, 11, 2.49564)
@@ -2734,6 +2908,41 @@ layers = 129
 mesh = SubResource("ArrayMesh_wg2a7")
 skeleton = NodePath("")
 
+[node name="GramaTemplate20" type="MeshInstance3D" parent="Paredes"]
+transform = Transform3D(1.9999999, 0, 0, 0, 1.9999999, 0, 0, 0, 2, -0.8598614, 2.3274155, -203.04321)
+layers = 129
+mesh = SubResource("ArrayMesh_wg2a7")
+skeleton = NodePath("")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Paredes/GramaTemplate20"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Paredes/GramaTemplate20/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_uhglm")
+
+[node name="GramaTemplate21" type="MeshInstance3D" parent="Paredes"]
+transform = Transform3D(-8.742277e-08, -1.9999999, 0, 1.9999999, -8.742277e-08, 0, 0, 0, 2, 9.210612, -7.8104115, -203.04321)
+layers = 129
+mesh = SubResource("ArrayMesh_wg2a7")
+skeleton = NodePath("")
+
+[node name="GramaTemplate22" type="MeshInstance3D" parent="Paredes"]
+transform = Transform3D(3.8213705e-15, 8.742277e-08, 2, 1.9999999, -8.742277e-08, 0, 8.742277e-08, 1.9999999, -8.742278e-08, -0.7480364, -7.8104115, -192.87372)
+layers = 129
+mesh = SubResource("ArrayMesh_wg2a7")
+skeleton = NodePath("")
+
+[node name="GramaTemplate23" type="MeshInstance3D" parent="Paredes"]
+transform = Transform3D(3.8213705e-15, 8.742277e-08, 2, 1.9999999, -8.742277e-08, 0, 8.742277e-08, 1.9999999, -8.742278e-08, -0.7480364, -28.08609, -192.87372)
+layers = 129
+mesh = SubResource("ArrayMesh_wg2a7")
+skeleton = NodePath("")
+
+[node name="GramaTemplate24" type="MeshInstance3D" parent="Paredes"]
+transform = Transform3D(8.742277e-08, 1.9999999, -1.7484555e-07, 1.9999999, -8.742277e-08, 0, -7.642741e-15, -1.7484554e-07, -2, -10.940319, -7.8104115, -202.89804)
+layers = 129
+mesh = SubResource("ArrayMesh_wg2a7")
+skeleton = NodePath("")
+
 [node name="coquinho" type="CharacterBody3D" parent="." node_paths=PackedStringArray("ponto_de_tiro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3929704, 0.037671953, -82.05053)
 script = ExtResource("13_843sb")
@@ -2850,13 +3059,13 @@ mesh = SubResource("CapsuleMesh_uhglm")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7108207, 4.9872494, -144.6742)
 
 [node name="CameraMan" type="Node3D" parent="." node_paths=PackedStringArray("player")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 30.888107, -58.961456)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 34.10173, -56.94426)
 script = ExtResource("17_3aakq")
 player = NodePath("../CharacterBody3D")
-vel = 8.0
+vel = 15.0
 
 [node name="SpringArm3D" type="SpringArm3D" parent="CameraMan"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.05777645)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.9178696, 2.9422226)
 shape = SubResource("SphereShape3D_uhglm")
 spring_length = 2.0
 
@@ -2879,7 +3088,8 @@ shape = SubResource("BoxShape3D_3ish3")
 [connection signal="body_exited" from="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/Area3D" to="criatura" method="_on_area_3d_body_exited"]
 [connection signal="body_entered" from="plataformas/Platform2/Area3D" to="plataformas/Platform2" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="plataformas/Platform2/Area3D" to="plataformas/Platform2" method="_on_area_3d_body_exited"]
-[connection signal="body_entered" from="plataformas/Platformafixa/Area3D" to="plataformas/Platformafixa" method="_on_area_3d_body_entered"]
-[connection signal="body_exited" from="plataformas/Platformafixa/Area3D" to="plataformas/Platformafixa" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="plataformas/Platforma3mov/Area3D" to="plataformas/Platforma3mov" method="_on_area_3d_body_entered"]
+[connection signal="body_exited" from="plataformas/Platforma3mov/Area3D" to="plataformas/Platforma3mov" method="_on_area_3d_body_exited"]
+[connection signal="body_entered" from="plataformas/Platforma4decay/Area3D" to="plataformas/Platforma4decay" method="_on_area_3d_body_entered"]
 [connection signal="area_entered" from="coquinho/levardano" to="coquinho" method="_on_levardano_area_entered"]
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]

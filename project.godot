@@ -26,6 +26,10 @@ window/size/viewport_height=224
 window/size/mode=2
 window/stretch/mode="viewport"
 
+[filesystem]
+
+import/blender/enabled=false
+
 [input]
 
 frente={
