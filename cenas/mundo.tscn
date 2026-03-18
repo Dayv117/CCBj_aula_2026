@@ -1677,6 +1677,33 @@ data = PackedVector3Array(0.0927, 3.1968, 0.1103, 1.5137, 3.1887999, 1.1876, 1.7
 [sub_resource type="BoxShape3D" id="BoxShape3D_puycu"]
 size = Vector3(4, 1, 3)
 
+[sub_resource type="Animation" id="Animation_3ish3"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.197812, 0, -31.0574)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("../Platforma3mov:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-0.19781208, 0, -115.47099)]
+}
+
 [sub_resource type="Animation" id="Animation_uhglm"]
 resource_name = "plat_mov"
 length = 10.0
@@ -1706,52 +1733,10 @@ tracks/1/keys = {
 "values": [Vector3(-0.19781208, 0, -85.4778), Vector3(-0.19781208, 0, -85.4778), Vector3(-0.19781208, 0, -115.47099), Vector3(-0.19781208, 0, -115.47099), Vector3(-0.19781208, 0, -85.4778), Vector3(-0.19781208, 0, -85.4778)]
 }
 
-[sub_resource type="Animation" id="Animation_3ish3"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:position")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.197812, 0, -31.0574)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("../Platforma3mov:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(-0.19781208, 0, -115.47099)]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_l6ea4"]
 _data = {
 &"RESET": SubResource("Animation_3ish3"),
 &"plat_mov": SubResource("Animation_uhglm")
-}
-
-[sub_resource type="Animation" id="Animation_l6ea4"]
-resource_name = "aparecendo"
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 1),
-"transitions": PackedFloat32Array(1, 1),
-"update": 0,
-"values": [Vector3(0, 0, 0), Vector3(1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_4vauu"]
@@ -1778,7 +1763,22 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Vector3(-0.007265568, 0, -146.09741)]
+"values": [Vector3(0.90386367, 0, -183.20369)]
+}
+
+[sub_resource type="Animation" id="Animation_l6ea4"]
+resource_name = "aparecendo"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:scale")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(1, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_7447s"]
@@ -2353,7 +2353,7 @@ mesh = SubResource("ArrayMesh_jstsh")
 skeleton = NodePath("")
 
 [node name="Platform1" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.197812, -0.053819805, -43.337444)
+transform = Transform3D(3, 0, 0, 0, 3, 0, 0, 0, 3, -0.197812, -13.568941, -272.82196)
 layers = 129
 mesh = SubResource("ArrayMesh_hacy7")
 skeleton = NodePath("")
@@ -2756,7 +2756,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
 shape = SubResource("BoxShape3D_puycu")
 
 [node name="Platforma4decay" type="MeshInstance3D" parent="plataformas"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.007265568, 0, -146.09741)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90386367, 0, -183.20369)
 layers = 129
 mesh = SubResource("ArrayMesh_7oclo")
 skeleton = NodePath("")
@@ -2774,6 +2774,98 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
 shape = SubResource("BoxShape3D_puycu")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="plataformas/Platforma4decay"]
+libraries = {
+&"": SubResource("AnimationLibrary_lgx3y")
+}
+
+[node name="Platforma4decay2" type="MeshInstance3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90386367, 0, -183.20369)
+layers = 129
+mesh = SubResource("ArrayMesh_7oclo")
+skeleton = NodePath("")
+script = ExtResource("12_3ish3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="plataformas/Platforma4decay2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay2/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pfgfe")
+
+[node name="Area3D" type="Area3D" parent="plataformas/Platforma4decay2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay2/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
+shape = SubResource("BoxShape3D_puycu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plataformas/Platforma4decay2"]
+libraries = {
+&"": SubResource("AnimationLibrary_lgx3y")
+}
+
+[node name="Platforma4decay3" type="MeshInstance3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90386367, 0, -183.20369)
+layers = 129
+mesh = SubResource("ArrayMesh_7oclo")
+skeleton = NodePath("")
+script = ExtResource("12_3ish3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="plataformas/Platforma4decay3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay3/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pfgfe")
+
+[node name="Area3D" type="Area3D" parent="plataformas/Platforma4decay3"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay3/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
+shape = SubResource("BoxShape3D_puycu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plataformas/Platforma4decay3"]
+libraries = {
+&"": SubResource("AnimationLibrary_lgx3y")
+}
+
+[node name="Platforma4decay4" type="MeshInstance3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90386367, 0, -183.20369)
+layers = 129
+mesh = SubResource("ArrayMesh_7oclo")
+skeleton = NodePath("")
+script = ExtResource("12_3ish3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="plataformas/Platforma4decay4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay4/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pfgfe")
+
+[node name="Area3D" type="Area3D" parent="plataformas/Platforma4decay4"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay4/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
+shape = SubResource("BoxShape3D_puycu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plataformas/Platforma4decay4"]
+libraries = {
+&"": SubResource("AnimationLibrary_lgx3y")
+}
+
+[node name="Platforma4decay5" type="MeshInstance3D" parent="plataformas"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.90386367, 0, -183.20369)
+layers = 129
+mesh = SubResource("ArrayMesh_7oclo")
+skeleton = NodePath("")
+script = ExtResource("12_3ish3")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="plataformas/Platforma4decay5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay5/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pfgfe")
+
+[node name="Area3D" type="Area3D" parent="plataformas/Platforma4decay5"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay5/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
+shape = SubResource("BoxShape3D_puycu")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="plataformas/Platforma4decay5"]
 libraries = {
 &"": SubResource("AnimationLibrary_lgx3y")
 }
@@ -3091,5 +3183,9 @@ shape = SubResource("BoxShape3D_3ish3")
 [connection signal="body_entered" from="plataformas/Platforma3mov/Area3D" to="plataformas/Platforma3mov" method="_on_area_3d_body_entered"]
 [connection signal="body_exited" from="plataformas/Platforma3mov/Area3D" to="plataformas/Platforma3mov" method="_on_area_3d_body_exited"]
 [connection signal="body_entered" from="plataformas/Platforma4decay/Area3D" to="plataformas/Platforma4decay" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="plataformas/Platforma4decay2/Area3D" to="plataformas/Platforma4decay2" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="plataformas/Platforma4decay3/Area3D" to="plataformas/Platforma4decay3" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="plataformas/Platforma4decay4/Area3D" to="plataformas/Platforma4decay4" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="plataformas/Platforma4decay5/Area3D" to="plataformas/Platforma4decay5" method="_on_area_3d_body_entered"]
 [connection signal="area_entered" from="coquinho/levardano" to="coquinho" method="_on_levardano_area_entered"]
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
