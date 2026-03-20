@@ -1,8 +1,9 @@
-[gd_scene load_steps=24 format=4 uid="uid://hgsikppiigs8"]
+[gd_scene load_steps=28 format=4 uid="uid://hgsikppiigs8"]
 
 [ext_resource type="Script" uid="uid://cjbljh68e1cqi" path="res://scripts/character_body_3d.gd" id="1_8574k"]
 [ext_resource type="Texture2D" uid="uid://c0ka8cpfptw0j" path="res://assets/3D/Modelos/buddybuddy_Buddytex.png" id="1_bqi7g"]
 [ext_resource type="Texture2D" uid="uid://ckwlkpfcax03e" path="res://assets/3D/brilho_2.png" id="3_6gmvs"]
+[ext_resource type="Texture2D" uid="uid://vhd1fxjuspgx" path="res://assets/vento1.png" id="4_o48gv"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8574k"]
 radius = 1.25
@@ -262,7 +263,7 @@ tracks/23/loop_wrap = true
 tracks/23/keys = {
 "times": PackedFloat32Array(0.03333333, 0.5, 1.9333333),
 "transitions": PackedFloat32Array(1, 1, 1),
-"update": 1,
+"update": 0,
 "values": [true, false, true]
 }
 tracks/24/type = "value"
@@ -288,18 +289,6 @@ tracks/25/keys = {
 "transitions": PackedFloat32Array(1, 1),
 "update": 1,
 "values": [true, false]
-}
-tracks/26/type = "value"
-tracks/26/imported = false
-tracks/26/enabled = true
-tracks/26/path = NodePath("../Areaataque/MeshInstance3D:mesh:material:albedo_color")
-tracks/26/interp = 1
-tracks/26/loop_wrap = true
-tracks/26/keys = {
-"times": PackedFloat32Array(0, 0.93333334, 1.9),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Color(1, 1, 1, 0), Color(1, 1, 1, 0.99607843), Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_bwdqg"]
@@ -1303,7 +1292,7 @@ tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
-"update": 1,
+"update": 0,
 "values": [false]
 }
 tracks/1/type = "value"
@@ -1329,18 +1318,6 @@ tracks/2/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [false]
-}
-tracks/3/type = "value"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("../Areaataque/MeshInstance3D:mesh:material:albedo_color")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Color(1, 1, 1, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_pspw5"]
@@ -1867,9 +1844,39 @@ albedo_texture = ExtResource("3_6gmvs")
 [sub_resource type="PlaneMesh" id="PlaneMesh_a23vc"]
 material = SubResource("StandardMaterial3D_hnnuc")
 
-[sub_resource type="TorusMesh" id="TorusMesh_6gmvs"]
-inner_radius = 6.0
-outer_radius = 5.0
+[sub_resource type="AtlasTexture" id="AtlasTexture_a23vc"]
+atlas = ExtResource("4_o48gv")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_nuhj0"]
+atlas = ExtResource("4_o48gv")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_g4pju"]
+atlas = ExtResource("4_o48gv")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_hm1pn"]
+animations = [{
+"frames": [{
+"duration": 0.5,
+"texture": SubResource("AtlasTexture_a23vc")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_nuhj0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_g4pju")
+}],
+"loop": false,
+"name": &"ataque",
+"speed": 10.0
+}, {
+"frames": [],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Persist", "player"]]
 collision_layer = 3
@@ -2044,9 +2051,13 @@ gravity = Vector3(0, -3, 0)
 scale_amount_min = 0.1
 scale_amount_max = 0.4
 
-[node name="MeshInstance3D" type="MeshInstance3D" parent="piv/Areaataque"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4419513, 0)
-mesh = SubResource("TorusMesh_6gmvs")
+[node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="piv/Areaataque"]
+transform = Transform3D(10, 0, 0, 0, -4.371139e-07, 10, 0, -10, -4.371139e-07, 0, 1, 0)
+texture_filter = 0
+sprite_frames = SubResource("SpriteFrames_hm1pn")
+animation = &"ataque"
+frame = 2
+frame_progress = 1.0
 
 [node name="Area3D" type="Area3D" parent="."]
 

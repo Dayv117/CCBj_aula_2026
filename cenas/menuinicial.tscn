@@ -3370,7 +3370,7 @@ offset_left = 94.0
 offset_top = 54.0
 offset_right = 134.0
 offset_bottom = 77.0
-text = "UIUIUI"
+text = "Torre"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control"]
 

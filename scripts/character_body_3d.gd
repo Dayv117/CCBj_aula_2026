@@ -5,34 +5,40 @@ const SPEED = 5.0
 const JUMP_VELOCITY = 10
 @onready var piv: Node3D = $piv
 @onready var anim: AnimationPlayer = $piv/buddybuddy/AnimationPlayer
+@onready var anim2: AnimatedSprite3D = $piv/Areaataque/AnimatedSprite3D
 var atacando: bool = false
 var naoataca: bool = false
+var podepular: bool = false
 var num_rotacao = deg_to_rad(0)
 @export var turn_vel = 7.5
 func _ready() -> void:
+	anim2.hide()
 	$piv/Areaataque/CollisionShape3D2.disabled = true
 func _process(delta: float) -> void:
 	animation(delta)
 func _physics_process(delta: float) -> void:
 	# Add the gravity.
 	if not is_on_floor():
-		naoataca = true
-		velocity += get_gravity() * delta
-	if is_on_floor():
+		
 		naoataca = false
-	if naoataca == false:
+		velocity += get_gravity() * delta
+
 		
-		if Input.is_action_just_pressed("ataque"):
-			atacando = true
-			anim.play("Attack")
-			await get_tree().create_timer(2).timeout
-			
+	if Input.is_action_just_pressed("ataque"):
+		atacando = true
+		anim.play("Attack")
+		anim2.show()
+		anim2.play("ataque")
+		await get_tree().create_timer(1.5).timeout
+		anim2.hide()
 		
-			atacando = false
-	if Input.is_action_just_pressed("pulo") and is_on_floor():
+		
+		atacando = false
+	if Input.is_action_just_pressed("pulo"):
 		anim.play("Jump")
 		velocity.y = JUMP_VELOCITY
-
+	#if Input.is_action_just_pressed("resetar checkpoint"):
+		#Saveload.saveloadscene.reset_checkpoint()
 	if !atacando:
 		
 		var input_dir := Input.get_vector("esquerda", "direita", "frente", "atras")
@@ -49,7 +55,8 @@ func _physics_process(delta: float) -> void:
 func animation(delta):
 	if is_on_floor():
 		var andando = false
-		
+		#if Input.is_action_just_pressed("ataque"):
+			#atacando = true
 		if !atacando:
 			
 			if Input.is_action_pressed("frente"):
@@ -83,6 +90,8 @@ func animation(delta):
 			else:
 				andando = false
 				anim.play("Idle")
+		#else:
+			#anim2.play("ataque")
 func rotacionar(delta):
 	piv.rotation.y = lerp_angle(piv.rotation.y, num_rotacao, turn_vel * delta)
 func save():

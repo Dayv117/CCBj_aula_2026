@@ -86,6 +86,7 @@ func diminuir_escala(delta):
 func _on_area_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		jogador_no_trigger = true
+		emit_signal("naplataforma")
 		print("jogadour entrou na area")
 	pass # Replace with function body.
 

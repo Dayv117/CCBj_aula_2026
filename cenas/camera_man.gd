@@ -15,9 +15,9 @@ func _process(delta: float) -> void:
 
 func activeterot(rotacao):
 	var rot_tween = create_tween()
-	rot_tween.tween_property(spring, "rotation_degrees",rotacao,0.5)
+	rot_tween.tween_property(spring, 'rotation_degrees',rotacao,0.5)
 	player.rotation_degrees.y = rotation_degrees.move_toward(rotacao, vel * 60).y
 
 func activatepos(posicao):
 	var pos_tween = create_tween()
-	pos_tween.tween_property(spring, "position", posicao,0.5)
+	pos_tween.tween_property(spring, 'position', posicao,0.5)

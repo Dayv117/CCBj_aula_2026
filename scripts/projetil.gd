@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 @export var dano:  int = 1
-@export var velocidade: float = 20
+@export var velocidade: float = 10
 
 func _ready() -> void:
 	await get_tree().create_timer(3.0).timeout

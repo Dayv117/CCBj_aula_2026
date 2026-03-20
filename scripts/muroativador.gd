@@ -14,7 +14,7 @@ extends Area3D
 func _on_body_entered(body: Node3D) -> void:
 	if body.is_in_group("player"):
 		if muda_rot:
-			cameraman.activaterot(nova_rot)
+			cameraman.activeterot(nova_rot)
 		if muda_pos:
 			cameraman.activatepos(nova_pos)
 	pass # Replace with function body.

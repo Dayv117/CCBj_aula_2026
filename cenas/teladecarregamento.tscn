@@ -1,0 +1,110 @@
+[gd_scene load_steps=10 format=3 uid="uid://c5qwxs1gt6n6g"]
+
+[ext_resource type="Texture2D" uid="uid://d3crdat127bb8" path="res://assets/icone.png" id="1_7jbd5"]
+[ext_resource type="Script" uid="uid://663n3eknne3n" path="res://cenas/teladecarregamento.gd" id="1_ekctd"]
+
+[sub_resource type="Animation" id="Animation_ekctd"]
+resource_name = "new_animation"
+length = 4.0
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1, 2.01, 3.04, 4),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(200, 172), Vector2(200, 155.05), Vector2(200, 172), Vector2(200, 155.05), Vector2(200, 172)]
+}
+
+[sub_resource type="Animation" id="Animation_8dgl7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Node2D:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(29, 172)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_00n26"]
+_data = {
+&"RESET": SubResource("Animation_8dgl7"),
+&"new_animation": SubResource("Animation_ekctd")
+}
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_yihyp"]
+atlas = ExtResource("1_7jbd5")
+region = Rect2(0, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_2ojab"]
+atlas = ExtResource("1_7jbd5")
+region = Rect2(128, 0, 128, 128)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_h8ns4"]
+atlas = ExtResource("1_7jbd5")
+region = Rect2(256, 0, 128, 128)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_66l0q"]
+animations = [{
+"frames": [{
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_yihyp")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_2ojab")
+}, {
+"duration": 2.0,
+"texture": SubResource("AtlasTexture_h8ns4")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}]
+
+[node name="teladecarregamento" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_ekctd")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 261.0
+offset_bottom = 229.0
+color = Color(0, 0, 0, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 175.0
+offset_top = 200.0
+offset_right = 279.0
+offset_bottom = 223.0
+scale = Vector2(0.5, 0.5)
+text = "Carregando..."
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_00n26")
+}
+autoplay = "new_animation"
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(29, 172)
+scale = Vector2(0.4453125, 0.4453125)
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="Node2D"]
+sprite_frames = SubResource("SpriteFrames_66l0q")
+autoplay = "default"
+frame_progress = 0.04383484

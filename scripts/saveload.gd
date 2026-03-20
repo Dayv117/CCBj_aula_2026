@@ -1,14 +1,14 @@
 extends Node
 class_name Saveload
 static var saveloadscene: Saveload = null
-
+var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 
 
 func _ready() -> void:
 	saveloadscene = self
 	load_game()
 func save_game():
-	var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
+	#var save_file = FileAccess.open("user://savegame.save", FileAccess.WRITE)
 	var save_nodes = get_tree().get_nodes_in_group("Persist")
 	for node in save_nodes:
 		# Check the node is an instanced scene so it can be instanced again during load.
@@ -57,16 +57,17 @@ func load_game():
 		if !save_nodes[id].has_method("loaddata"):
 			
 			continue
-		#await get_tree().create_timer(1).timeout
+		
 		save_nodes[id].loaddata(node_data)
-		#print(node_data)
-		# Firstly, we need to create the object and add it to the tree and set its position.
-		#var new_object = load(node_data["filename"]).instantiate()
-		#get_node(node_data["parent"]).add_child(new_object)
-		#new_object.position = Vector2(node_data["pos_x"], node_data["pos_y"])
+	
 		id += 1
-		# Now we set the remaining variables.
-		#for i in node_data.keys():
-			#if i == "filename" or i == "parent" or i == "pos_x" or i == "pos_y":
-				#continue
-			#new_object.set(i, node_data[i])
+	
+#func reset_checkpoint():
+	#var dir = DirAccess.open("user://")
+	#if dir.file_exists("savegame.save"):
+		#dir.remove("savegame.save")
+		#return true
+	#return false
+
+#func reset_and_reload():
+	
