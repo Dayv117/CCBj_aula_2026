@@ -26,6 +26,9 @@ func _ready() -> void:
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	pass
+func morrer():
+	get_tree().change_scene_to_file("res://cenas/teladerrota.tscn")
+	
 func addvida(quantidade: int):
 	
 	if vida_atual <= vida_maxima:
@@ -40,5 +43,6 @@ func addponto(quantidade: int):
 func levardano(quantidade: int):
 	vida_atual -= 1
 	if vida_atual <= 0:
+		morrer()
 		pass
 	pass

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://b25ddwgp1dr0"]
+
+[ext_resource type="Script" uid="uid://rqq5sylxj7u1" path="res://telavitoria.gd" id="1_3ge3d"]
+
+[node name="telavitoria" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_3ge3d")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 265.0
+offset_bottom = 234.0
+color = Color(0.03529412, 0.17254902, 1, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 79.0
+offset_top = 44.0
+offset_right = 166.0
+offset_bottom = 67.0
+text = "PARABENS!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 91.0
+offset_right = 265.0
+offset_bottom = 199.0
+text = "OBRIGADO 
+AGORA 
+ME COLOCAR NO MENU DE NOVO"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

@@ -1,0 +1,38 @@
+[gd_scene load_steps=2 format=3 uid="uid://dht35kh5yvivl"]
+
+[ext_resource type="Script" uid="uid://ck17vbj54wctj" path="res://teladerrota.gd" id="1_esc52"]
+
+[node name="teladerrota" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_esc52")
+
+[node name="ColorRect" type="ColorRect" parent="."]
+layout_mode = 0
+offset_right = 261.0
+offset_bottom = 228.0
+color = Color(1, 0.07058824, 0.2509804, 1)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 0
+offset_left = 86.0
+offset_top = 47.0
+offset_right = 164.0
+offset_bottom = 70.0
+text = "DERROTA!"
+
+[node name="Button" type="Button" parent="."]
+layout_mode = 0
+offset_left = 38.0
+offset_top = 115.0
+offset_right = 226.0
+offset_bottom = 192.0
+text = "NÃO CONSEGUI
+ E
+ VOU TENTAR DE NOVO"
+
+[connection signal="button_down" from="Button" to="." method="_on_button_button_down"]

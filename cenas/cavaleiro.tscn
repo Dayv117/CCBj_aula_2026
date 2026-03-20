@@ -1,0 +1,150 @@
+[gd_scene load_steps=10 format=3 uid="uid://dy10wycjt6be5"]
+
+[ext_resource type="Script" uid="uid://c03exrv7cjpu1" path="res://scripts/cavaleiro.gd" id="1_et8c6"]
+[ext_resource type="PackedScene" uid="uid://cmwqi453at7sq" path="res://assets/3D/Modelos/cavaleiro.glb" id="2_j66ch"]
+[ext_resource type="PackedScene" uid="uid://bsj0843h3123b" path="res://assets/3D/espada.glb" id="3_20ax0"]
+
+[sub_resource type="Animation" id="Animation_et8c6"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("espada2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(1.2515743, 3.4684782, 0.3124671)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("espada2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.4224434, 0.7120943)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("espada2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0.7, 0.7, 0.7)]
+}
+
+[sub_resource type="Animation" id="Animation_kmqb4"]
+resource_name = "ataque"
+length = 2.5
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("espada2:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.5333333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.2515743, 3.4684782, 0.3124671), Vector3(1.572, 3.643, -1.008), Vector3(1.537, 3.643, -0.028), Vector3(1.537, 3.643, -0.027999997)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("espada2:rotation")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 0.6333333, 1.5333333, 2.4666667),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, -1.4224434, 0.7120943), Vector3(0, -1.4224434, 1.1536627), Vector3(0, -1.4224434, 0.49218285), Vector3(0, -2.0333085, -1.2723451)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("espada2:scale")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 0.6666667, 1.5333333, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0.7, 0.7, 0.7), Vector3(0.53, 0.53, 0.53), Vector3(0.7, 0.7, 0.7), Vector3(0.9, 0.9, 0.9)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("area_ataque/CollisionShape3D:disabled")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0.03333333, 1.9666667, 2.5),
+"transitions": PackedFloat32Array(1, 1, 1),
+"update": 1,
+"values": [true, false, true]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_63g6e"]
+_data = {
+&"RESET": SubResource("Animation_et8c6"),
+&"ataque": SubResource("Animation_kmqb4")
+}
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_leny8"]
+size = Vector3(3.4521484, 7.0756836, 3.1607513)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_fxv7x"]
+size = Vector3(6.0302734, 6.236206, 4.020447)
+
+[sub_resource type="CylinderShape3D" id="CylinderShape3D_et8c6"]
+height = 11.1467285
+radius = 10.137
+
+[node name="cavaleiro" type="Node3D"]
+script = ExtResource("1_et8c6")
+
+[node name="cavaleiro" parent="." instance=ExtResource("2_j66ch")]
+
+[node name="espada2" parent="." instance=ExtResource("3_20ax0")]
+transform = Transform3D(0.07832367, -0.06760717, -0.6923111, 0.4573944, 0.52989656, 0, 0.5240761, -0.45237032, 0.10346655, 1.2515743, 3.4684782, 0.3124671)
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_63g6e")
+}
+
+[node name="Area3D" type="Area3D" parent="."]
+collision_layer = 5
+collision_mask = 5
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0039052963, 3.0378418, 0.13706207)
+shape = SubResource("BoxShape3D_leny8")
+
+[node name="area_ataque" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="area_ataque"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.3371639, 2.618103, 4.1547174)
+shape = SubResource("BoxShape3D_fxv7x")
+disabled = true
+
+[node name="ativar_ataque" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="ativar_ataque"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.6165771, 0)
+shape = SubResource("CylinderShape3D_et8c6")
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="body_entered" from="area_ataque" to="." method="_on_areaataque_body_entered"]
+[connection signal="body_entered" from="ativar_ataque" to="." method="_on_ativar_ataque_body_entered"]

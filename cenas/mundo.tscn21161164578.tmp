@@ -1,4 +1,4 @@
-[gd_scene load_steps=172 format=4 uid="uid://l0a8x3escq2o"]
+[gd_scene load_steps=164 format=4 uid="uid://l0a8x3escq2o"]
 
 [ext_resource type="Texture2D" uid="uid://b7y38q8vpt7w6" path="res://assets/3D/Props/Props_EnviroTex1.png" id="1_2novb"]
 [ext_resource type="PackedScene" uid="uid://hgsikppiigs8" path="res://cenas/character_body_3d.tscn" id="2_ln3fj"]
@@ -26,11 +26,7 @@
 [ext_resource type="Texture2D" uid="uid://b3o6or3l60602" path="res://assets/portal.png" id="25_wevj1"]
 [ext_resource type="Script" uid="uid://b6kyd66c3wqx3" path="res://cenas/portal.gd" id="26_ljupk"]
 [ext_resource type="PackedScene" uid="uid://c5qwxs1gt6n6g" path="res://cenas/teladecarregamento.tscn" id="27_ljupk"]
-[ext_resource type="Script" uid="uid://32ottm46sx8w" path="res://cenas/telapause.gd" id="28_4lwwk"]
 [ext_resource type="PackedScene" uid="uid://dy10wycjt6be5" path="res://cenas/cavaleiro.tscn" id="28_7jku0"]
-[ext_resource type="Texture2D" uid="uid://defglixkmktiv" path="res://assets/3D/Modelos/strela.png" id="29_4lwwk"]
-[ext_resource type="Script" uid="uid://netvvihl3d6x" path="res://cenas/strela.gd" id="30_hka7m"]
-[ext_resource type="AudioStream" uid="uid://c6gjnh4n12jc0" path="res://assets/musicajogo.mp3" id="31_ydiuj"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmysq"]
 resource_name = "EnviromentTex"
@@ -2247,7 +2243,7 @@ size = Vector3(2, 151.76086, 150)
 size = Vector3(15, 150, 1)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_hka7m"]
-size = Vector3(11, 1, 14.602051)
+size = Vector3(11, 1, 21.003906)
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_ljupk"]
 albedo_color = Color(0, 0, 0, 1)
@@ -2257,7 +2253,7 @@ material = SubResource("StandardMaterial3D_ljupk")
 size = Vector2(200, 100)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ydiuj"]
-size = Vector3(11, 1, 15.241699)
+size = Vector3(11, 1, 21.003906)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_qefhr"]
 size = Vector3(11, 1, 21.003906)
@@ -2268,47 +2264,6 @@ albedo_color = Color(0, 0, 0, 1)
 [sub_resource type="QuadMesh" id="QuadMesh_4lwwk"]
 material = SubResource("StandardMaterial3D_7jku0")
 size = Vector2(15, 25)
-
-[sub_resource type="Animation" id="Animation_hka7m"]
-resource_name = "strela"
-length = 2.0
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.96666664, 1.9666667),
-"transitions": PackedFloat32Array(1, 1, 1),
-"update": 0,
-"values": [Vector3(0, -1.4224434, 0), Vector3(0, -1.4224434, 3.1415927), Vector3(0, -1.4224434, 0.017453292)]
-}
-
-[sub_resource type="Animation" id="Animation_ydiuj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -1.4224434, 0)]
-}
-
-[sub_resource type="AnimationLibrary" id="AnimationLibrary_jfhpe"]
-_data = {
-&"RESET": SubResource("Animation_ydiuj"),
-&"strela": SubResource("Animation_hka7m")
-}
-
-[sub_resource type="SphereShape3D" id="SphereShape3D_qefhr"]
-radius = 2.038
 
 [node name="mundo" type="Node3D"]
 
@@ -2436,7 +2391,6 @@ transform = Transform3D(0.665, 0, 0, 0, 0.665, 0, 0, 0, 0.665, 0, 32.07641, -528
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1.5037594, 0, 0, 0, 1.4603523, 0.35869694, 0, -0.35869694, 1.4603523, 0.1716214, 10.555698, 11.744202)
-current = true
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_ln3fj")
@@ -3133,52 +3087,6 @@ shape = SubResource("ConcavePolygonShape3D_pfgfe")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
 shape = SubResource("BoxShape3D_puycu")
 
-[node name="Platforma4decay10" type="MeshInstance3D" parent="plataformas" node_paths=PackedStringArray("platforma_4_decay", "collision_shape_3d", "area_3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99558854, 30.197655, -640.6458)
-layers = 129
-mesh = SubResource("ArrayMesh_7oclo")
-skeleton = NodePath("")
-script = ExtResource("12_3ish3")
-intensidade_vibracao = 3.0
-eixo_vibracao = Vector3(0.05, 0, 0)
-platforma_4_decay = NodePath(".")
-collision_shape_3d = NodePath("StaticBody3D/CollisionShape3D")
-area_3d = NodePath("Area3D")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="plataformas/Platforma4decay10"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay10/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_pfgfe")
-
-[node name="Area3D" type="Area3D" parent="plataformas/Platforma4decay10"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay10/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
-shape = SubResource("BoxShape3D_puycu")
-
-[node name="Platforma4decay9" type="MeshInstance3D" parent="plataformas" node_paths=PackedStringArray("platforma_4_decay", "collision_shape_3d", "area_3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99558854, 98.47887, -641.9827)
-layers = 129
-mesh = SubResource("ArrayMesh_7oclo")
-skeleton = NodePath("")
-script = ExtResource("12_3ish3")
-intensidade_vibracao = 3.0
-eixo_vibracao = Vector3(0.05, 0, 0)
-platforma_4_decay = NodePath(".")
-collision_shape_3d = NodePath("StaticBody3D/CollisionShape3D")
-area_3d = NodePath("Area3D")
-
-[node name="StaticBody3D" type="StaticBody3D" parent="plataformas/Platforma4decay9"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay9/StaticBody3D"]
-shape = SubResource("ConcavePolygonShape3D_pfgfe")
-
-[node name="Area3D" type="Area3D" parent="plataformas/Platforma4decay9"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay9/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
-shape = SubResource("BoxShape3D_puycu")
-
 [node name="Morro1" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.081612, 11, 2.49564)
 mesh = SubResource("ArrayMesh_vhwsp")
@@ -3850,119 +3758,6 @@ skeleton = NodePath("../MeshInstance3D")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.722845, 0)
 mesh = SubResource("CapsuleMesh_uhglm")
 
-[node name="coquinho2" type="CharacterBody3D" parent="." node_paths=PackedStringArray("ponto_de_tiro")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.734537, 107.808716, -683.6544)
-script = ExtResource("13_843sb")
-projetil = ExtResource("14_dww6m")
-ponto_de_tiro = NodePath("Marker3D")
-tempo_entre_tiros = 5.0
-
-[node name="Armature" type="Node3D" parent="coquinho2"]
-
-[node name="Skeleton3D" type="Skeleton3D" parent="coquinho2/Armature"]
-bones/0/name = "hip"
-bones/0/parent = -1
-bones/0/rest = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-bones/0/enabled = true
-bones/0/position = Vector3(0, 0, 0)
-bones/0/rotation = Quaternion(0, 0, 0, 1)
-bones/0/scale = Vector3(1, 1, 1)
-bones/1/name = "boot.l"
-bones/1/parent = 0
-bones/1/rest = Transform3D(-0.762645, 0.6265943, 0.16047424, -0.6265942, -0.77725494, 0.05704622, 0.16047421, -0.057046227, 0.9853901, 0, 1, 0)
-bones/1/enabled = true
-bones/1/position = Vector3(0, 1, 0)
-bones/1/rotation = Quaternion(0.08546885, -2.8459906e-09, 0.9387878, -0.33372512)
-bones/1/scale = Vector3(0.9999998, 1, 0.99999994)
-bones/2/name = "head"
-bones/2/parent = 0
-bones/2/rest = Transform3D(0.9999085, -0.013498608, -0.0008512153, 0.013498603, 0.99198663, 0.12561958, -0.00085129536, -0.12561958, 0.9920781, 0, 1, 0)
-bones/2/enabled = true
-bones/2/position = Vector3(0, 1, 0)
-bones/2/rotation = Quaternion(-0.06293599, 2.0106933e-08, 0.006762866, 0.99799466)
-bones/2/scale = Vector3(0.99999994, 0.99999994, 1)
-bones/3/name = "boca_2"
-bones/3/parent = 2
-bones/3/rest = Transform3D(0.99999917, -0.00085129554, 0.0009657514, 0.0008511621, -0.12561963, -0.9920781, 0.00096586905, 0.9920781, -0.1256188, 4.802132e-10, 1.177272, 1.1758857e-08)
-bones/3/enabled = true
-bones/3/position = Vector3(4.802132e-10, 1.177272, 1.1758857e-08)
-bones/3/rotation = Quaternion(0.75020623, -4.467228e-08, 0.0006436962, 0.6612036)
-bones/3/scale = Vector3(0.99999994, 0.9999999, 0.99999994)
-bones/4/name = "folha.l"
-bones/4/parent = 2
-bones/4/rest = Transform3D(0.85752094, 0.5138064, 0.025705459, -0.51380634, 0.85288334, 0.09269842, 0.025705278, -0.09269846, 0.9953624, 4.802132e-10, 1.177272, 1.1758857e-08)
-bones/4/enabled = true
-bones/4/position = Vector3(4.802132e-10, 1.177272, 1.1758857e-08)
-bones/4/rotation = Quaternion(-0.04815412, 4.8036558e-08, -0.26690733, 0.9625184)
-bones/4/scale = Vector3(0.99999994, 1, 1)
-bones/5/name = "folha.r"
-bones/5/parent = 2
-bones/5/rest = Transform3D(0.87103355, -0.4907527, -0.021499302, 0.49047107, 0.8664447, 0.093335666, -0.027176771, -0.09184328, 0.9954026, 0.031780157, 1.1768429, -2.7042464e-05)
-bones/5/enabled = true
-bones/5/position = Vector3(0.031780157, 1.1768429, -2.7042464e-05)
-bones/5/rotation = Quaternion(-0.04792251, 0.0014692749, 0.25393125, 0.9660333)
-bones/5/scale = Vector3(0.9999999, 0.9999999, 1)
-bones/6/name = "boot.r"
-bones/6/parent = 0
-bones/6/rest = Transform3D(-0.762645, -0.6265943, -0.16047424, 0.6265942, -0.77725494, 0.05704622, -0.16047421, -0.057046227, 0.9853901, 0, 1, 0)
-bones/6/enabled = true
-bones/6/position = Vector3(0, 1, 0)
-bones/6/rotation = Quaternion(-0.08546885, -2.8459906e-09, 0.9387878, 0.33372512)
-bones/6/scale = Vector3(0.9999998, 1, 0.99999994)
-bones/7/name = "root"
-bones/7/parent = -1
-bones/7/rest = Transform3D(1, 0, 0, 0, 0, 1, 0, -1, 0, 0, 0, 0)
-bones/7/enabled = true
-bones/7/position = Vector3(0, 0, 0)
-bones/7/rotation = Quaternion(-0.70710677, 0, 0, 0.70710677)
-bones/7/scale = Vector3(1, 1, 1)
-
-[node name="boca" type="MeshInstance3D" parent="coquinho2/Armature/Skeleton3D"]
-mesh = SubResource("ArrayMesh_lbd3l")
-skin = SubResource("Skin_nw0hr")
-
-[node name="botas" type="MeshInstance3D" parent="coquinho2/Armature/Skeleton3D"]
-mesh = SubResource("ArrayMesh_w5k7x")
-skin = SubResource("Skin_nw0hr")
-
-[node name="cabeca" type="MeshInstance3D" parent="coquinho2/Armature/Skeleton3D"]
-mesh = SubResource("ArrayMesh_ujxsr")
-skin = SubResource("Skin_nw0hr")
-
-[node name="cabelo" type="MeshInstance3D" parent="coquinho2/Armature/Skeleton3D"]
-mesh = SubResource("ArrayMesh_6t3w2")
-skin = SubResource("Skin_nw0hr")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="coquinho2"]
-libraries = {
-&"": SubResource("AnimationLibrary_otd6b")
-}
-
-[node name="reconhecimento" type="Area3D" parent="coquinho2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3929704, -0.037671953, 82.05053)
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="coquinho2/reconhecimento"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.9018307, 0, -82.66823)
-shape = SubResource("CylinderShape3D_dww6m")
-
-[node name="levardano" type="Area3D" parent="coquinho2"]
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="coquinho2/levardano"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5305988, 0)
-shape = SubResource("BoxShape3D_843sb")
-
-[node name="Marker3D" type="Marker3D" parent="coquinho2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.4292915, 0.95241547)
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="coquinho2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.7966628, 0)
-mesh = SubResource("SphereMesh_rdmaj")
-skeleton = NodePath("../MeshInstance3D")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="coquinho2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.722845, 0)
-mesh = SubResource("CapsuleMesh_uhglm")
-
 [node name="coracao2" parent="." instance=ExtResource("16_rdmaj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.7108207, 4.9872494, -144.6742)
 
@@ -4138,10 +3933,9 @@ transform = Transform3D(-6, 0, -5.2453663e-07, 0, 6, 0, 5.2453663e-07, 0, -6, -3
 [node name="Wall_Full_x2_Window_2" parent="castelo" instance=ExtResource("24_lgx3y")]
 transform = Transform3D(-2.6226832e-07, 0, -6, 0, 6, 0, 6, 0, -2.6226832e-07, -5.8676147, 75, -544.694)
 
-[node name="portal" type="Area3D" parent="castelo" node_paths=PackedStringArray("camera", "camera2")]
+[node name="portal" type="Area3D" parent="castelo" node_paths=PackedStringArray("camera")]
 script = ExtResource("26_ljupk")
 camera = NodePath("../../CharacterBody3D/Camera3D")
-camera2 = NodePath("../../Camera3D2")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="castelo/portal"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 41.516975, -526.63025)
@@ -4334,7 +4128,7 @@ shape = SubResource("BoxShape3D_jygj8")
 [node name="StaticBody3D" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.720176, 102.87043, -703.3595)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.720176, 147.59384, -697.073)
 shape = SubResource("BoxShape3D_hka7m")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
@@ -4344,11 +4138,10 @@ mesh = SubResource("QuadMesh_7jku0")
 [node name="StaticBody3D2" type="StaticBody3D" parent="."]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D2"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8969517, 106.363335, -683.5373)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.8103733, 151.89096, -668.7092)
 shape = SubResource("BoxShape3D_ydiuj")
 
 [node name="StaticBody3D3" type="StaticBody3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -47.594387, -19.748306)
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="StaticBody3D3"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.6043644, 156.88043, -641.91376)
@@ -4368,62 +4161,8 @@ mesh = SubResource("QuadMesh_4lwwk")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.94228935, 100.18565, -549.6464)
 mesh = SubResource("QuadMesh_4lwwk")
 
-[node name="Camera3D2" type="Camera3D" parent="."]
-transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 39.36317, 55.328114, -689.51074)
-
-[node name="telapause" type="Control" parent="."]
-layout_mode = 3
-anchors_preset = 0
-offset_right = 40.0
-offset_bottom = 40.0
-script = ExtResource("28_4lwwk")
-
-[node name="Button" type="Button" parent="telapause"]
-layout_mode = 0
-offset_left = 81.0
-offset_top = 87.0
-offset_right = 174.0
-offset_bottom = 118.0
-text = "RETORNAR"
-
-[node name="Label" type="Label" parent="telapause"]
-layout_mode = 0
-offset_left = 88.0
-offset_top = 35.0
-offset_right = 165.0
-offset_bottom = 58.0
-text = "PAUSADO"
-
-[node name="Button2" type="Button" parent="telapause"]
-layout_mode = 0
-offset_left = 80.0
-offset_top = 125.0
-offset_right = 175.0
-offset_bottom = 156.0
-text = "MENU"
-
-[node name="strela" type="Node3D" parent="."]
-
-[node name="Sprite3D" type="Sprite3D" parent="strela"]
-transform = Transform3D(0.7390468, 0, -4.9450793, 0, 5, 0, 4.9450793, 0, 0.7390468, -4.573694, 112.33886, -662.6834)
-texture = ExtResource("29_4lwwk")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="strela"]
-libraries = {
-&"": SubResource("AnimationLibrary_jfhpe")
-}
-autoplay = "strela"
-
-[node name="Area3D" type="Area3D" parent="strela"]
-script = ExtResource("30_hka7m")
-
-[node name="CollisionShape3D" type="CollisionShape3D" parent="strela/Area3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.166205, 112.258705, -664.10223)
-shape = SubResource("SphereShape3D_qefhr")
-
-[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
-stream = ExtResource("31_ydiuj")
-autoplay = true
+[node name="camera2" type="Marker3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.9711343, 0.23853347, 0, -0.23853347, 0.9711343, 45.2995, 68.415054, -689.66846)
 
 [connection signal="area_entered" from="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/Area3D" to="criatura" method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/Area3D" to="criatura" method="_on_area_3d_body_entered"]
@@ -4442,12 +4181,6 @@ autoplay = true
 [connection signal="body_entered" from="plataformas/Platforma4decay6/Area3D" to="plataformas/Platforma4decay6" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="plataformas/Platforma4decay7/Area3D" to="plataformas/Platforma4decay7" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="plataformas/Platforma4decay8/Area3D" to="plataformas/Platforma4decay8" method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="plataformas/Platforma4decay10/Area3D" to="plataformas/Platforma4decay10" method="_on_area_3d_body_entered"]
-[connection signal="body_entered" from="plataformas/Platforma4decay9/Area3D" to="plataformas/Platforma4decay9" method="_on_area_3d_body_entered"]
 [connection signal="area_entered" from="coquinho/levardano" to="coquinho" method="_on_levardano_area_entered"]
-[connection signal="area_entered" from="coquinho2/levardano" to="coquinho2" method="_on_levardano_area_entered"]
 [connection signal="body_entered" from="Area3D" to="Area3D" method="_on_body_entered"]
 [connection signal="body_entered" from="castelo/portal" to="castelo/portal" method="_on_body_entered"]
-[connection signal="button_down" from="telapause/Button" to="telapause" method="_on_button_button_down"]
-[connection signal="button_down" from="telapause/Button2" to="telapause" method="_on_button_2_button_down"]
-[connection signal="body_entered" from="strela/Area3D" to="strela/Area3D" method="_on_body_entered"]
