@@ -1,9 +1,9 @@
-[gd_scene load_steps=31 format=4 uid="uid://hgsikppiigs8"]
+[gd_scene load_steps=29 format=4 uid="uid://hgsikppiigs8"]
 
 [ext_resource type="Script" uid="uid://cjbljh68e1cqi" path="res://scripts/character_body_3d.gd" id="1_8574k"]
 [ext_resource type="Texture2D" uid="uid://c0ka8cpfptw0j" path="res://assets/3D/Modelos/buddybuddy_Buddytex.png" id="1_bqi7g"]
-[ext_resource type="Texture2D" uid="uid://ckwlkpfcax03e" path="res://assets/3D/brilho_2.png" id="3_6gmvs"]
 [ext_resource type="Texture2D" uid="uid://vhd1fxjuspgx" path="res://assets/vento1.png" id="4_o48gv"]
+[ext_resource type="AudioStream" uid="uid://cmnv0whgw4d3g" path="res://assets/sons/passosgrama.wav" id="5_a23vc"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_8574k"]
 radius = 1.25
@@ -277,18 +277,6 @@ tracks/24/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, 0, 0), Vector3(0, 12.566371, 0), Vector3(0, 18.849556, 0)]
-}
-tracks/25/type = "value"
-tracks/25/imported = false
-tracks/25/enabled = true
-tracks/25/path = NodePath("../Areaataque/CPUParticles3D:emitting")
-tracks/25/interp = 1
-tracks/25/loop_wrap = true
-tracks/25/keys = {
-"times": PackedFloat32Array(0.0333333, 1.9666667),
-"transitions": PackedFloat32Array(1, 1),
-"update": 1,
-"values": [true, false]
 }
 
 [sub_resource type="Animation" id="Animation_bwdqg"]
@@ -1307,18 +1295,6 @@ tracks/1/keys = {
 "update": 0,
 "values": [Vector3(0, 6.2831855, 0)]
 }
-tracks/2/type = "value"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("../Areaataque/CPUParticles3D:emitting")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
 
 [sub_resource type="Animation" id="Animation_pspw5"]
 resource_name = "Seat"
@@ -1840,14 +1816,6 @@ _data = {
 height = 4.0
 radius = 6.134
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hnnuc"]
-transparency = 1
-albedo_color = Color(1.6982813, 1.907455, 0, 1)
-albedo_texture = ExtResource("3_6gmvs")
-
-[sub_resource type="PlaneMesh" id="PlaneMesh_a23vc"]
-material = SubResource("StandardMaterial3D_hnnuc")
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_a23vc"]
 atlas = ExtResource("4_o48gv")
 region = Rect2(0, 0, 128, 128)
@@ -1889,6 +1857,7 @@ albedo_color = Color(1, 0, 0, 1)
 material = SubResource("StandardMaterial3D_a23vc")
 
 [node name="CharacterBody3D" type="CharacterBody3D" groups=["Persist", "player"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 0)
 collision_layer = 3
 collision_mask = 3
 script = ExtResource("1_8574k")
@@ -2030,6 +1999,11 @@ bones/16/scale = Vector3(1, 1, 1)
 mesh = SubResource("ArrayMesh_11qpq")
 skin = SubResource("Skin_vsyig")
 
+[node name="BoneAttachment3D" type="BoneAttachment3D" parent="piv/buddybuddy/Armação/Skeleton3D"]
+transform = Transform3D(4.371135e-08, -1, 0, 0, 0, 1, -1, -4.371135e-08, 0, 0, -1.584937, 0)
+bone_name = "virilha.r"
+bone_idx = 1
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="piv/buddybuddy"]
 libraries = {
 &"": SubResource("AnimationLibrary_n6d3k")
@@ -2042,24 +2016,6 @@ collision_mask = 4
 [node name="CollisionShape3D2" type="CollisionShape3D" parent="piv/Areaataque"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.6, -0.066)
 shape = SubResource("CylinderShape3D_o48gv")
-
-[node name="CPUParticles3D" type="CPUParticles3D" parent="piv/Areaataque"]
-transform = Transform3D(-0.99869275, 0.050442126, -0.008271068, -0.0076092146, 0.013299037, 0.99988264, 0.050546207, 0.9986385, -0.012897845, 0.29856873, 3.3359005, -0.28812814)
-emitting = false
-amount = 30
-lifetime = 2.0
-one_shot = true
-speed_scale = 2.0
-mesh = SubResource("PlaneMesh_a23vc")
-emission_shape = 6
-emission_ring_axis = Vector3(0, 0, 5)
-emission_ring_height = 1.0
-emission_ring_radius = 6.5
-emission_ring_inner_radius = 0.0
-emission_ring_cone_angle = 90.0
-gravity = Vector3(0, -3, 0)
-scale_amount_min = 0.1
-scale_amount_max = 0.4
 
 [node name="AnimatedSprite3D" type="AnimatedSprite3D" parent="piv/Areaataque"]
 transform = Transform3D(10, 0, 0, 0, -4.371139e-07, 10, 0, -10, -4.371139e-07, 0, 1, 0)
@@ -2085,3 +2041,6 @@ linear_accel_min = -100.0
 linear_accel_max = 69.84
 scale_amount_min = 0.5
 scale_amount_max = 0.5
+
+[node name="passos" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("5_a23vc")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=172 format=4 uid="uid://l0a8x3escq2o"]
+[gd_scene load_steps=177 format=4 uid="uid://l0a8x3escq2o"]
 
 [ext_resource type="Texture2D" uid="uid://b7y38q8vpt7w6" path="res://assets/3D/Props/Props_EnviroTex1.png" id="1_2novb"]
 [ext_resource type="PackedScene" uid="uid://hgsikppiigs8" path="res://cenas/character_body_3d.tscn" id="2_ln3fj"]
@@ -31,6 +31,8 @@
 [ext_resource type="Texture2D" uid="uid://defglixkmktiv" path="res://assets/3D/Modelos/strela.png" id="29_4lwwk"]
 [ext_resource type="Script" uid="uid://netvvihl3d6x" path="res://cenas/strela.gd" id="30_hka7m"]
 [ext_resource type="AudioStream" uid="uid://c6gjnh4n12jc0" path="res://assets/musicajogo.mp3" id="31_ydiuj"]
+[ext_resource type="AudioStream" uid="uid://cmnv0whgw4d3g" path="res://assets/sons/passosgrama.wav" id="32_qefhr"]
+[ext_resource type="AudioStream" uid="uid://wluk0inuk0cp" path="res://assets/sons/powerup.wav" id="33_jygj8"]
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_cmysq"]
 resource_name = "EnviromentTex"
@@ -835,6 +837,13 @@ _surfaces = [{
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_1kyvr")
 
+[sub_resource type="Gradient" id="Gradient_qefhr"]
+offsets = PackedFloat32Array(0, 0.5208333, 0.9166667)
+colors = PackedColorArray(0.019607844, 0.09411765, 0.08235294, 1, 0.1764706, 0.44705883, 0.6431373, 1, 0.7490196, 0.8235294, 0.76862746, 1)
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_jygj8"]
+gradient = SubResource("Gradient_qefhr")
+
 [sub_resource type="PanoramaSkyMaterial" id="PanoramaSkyMaterial_bo0jt"]
 panorama = ExtResource("3_wo13f")
 
@@ -845,6 +854,8 @@ sky_material = SubResource("PanoramaSkyMaterial_bo0jt")
 background_mode = 2
 sky = SubResource("Sky_wo13f")
 ambient_light_color = Color(0.217673, 0.132122, 0.526786, 1)
+adjustment_enabled = true
+adjustment_color_correction = SubResource("GradientTexture2D_jygj8")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_1m072"]
 _surfaces = [{
@@ -2234,6 +2245,9 @@ animations = [{
 [sub_resource type="BoxShape3D" id="BoxShape3D_vr8ws"]
 size = Vector3(16, 1, 180)
 
+[sub_resource type="BoxShape3D" id="BoxShape3D_0lt24"]
+size = Vector3(10, 1, 10)
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_4lwwk"]
 size = Vector3(11.1241455, 1, 82.93799)
 
@@ -2269,6 +2283,21 @@ albedo_color = Color(0, 0, 0, 1)
 material = SubResource("StandardMaterial3D_7jku0")
 size = Vector2(15, 25)
 
+[sub_resource type="Animation" id="Animation_ydiuj"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, -1.4224434, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_hka7m"]
 resource_name = "strela"
 length = 2.0
@@ -2284,21 +2313,6 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
 "values": [Vector3(0, -1.4224434, 0), Vector3(0, -1.4224434, 3.1415927), Vector3(0, -1.4224434, 0.017453292)]
-}
-
-[sub_resource type="Animation" id="Animation_ydiuj"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Sprite3D:rotation")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector3(0, -1.4224434, 0)]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_jfhpe"]
@@ -2432,7 +2446,7 @@ skeleton = NodePath("")
 transform = Transform3D(1, 0, 0, 0, 0.835683, 0.549212, 0, -0.549212, 0.835683, 0, 20.2826, -21.1055)
 
 [node name="CharacterBody3D" parent="." instance=ExtResource("2_ln3fj")]
-transform = Transform3D(0.665, 0, 0, 0, 0.665, 0, 0, 0, 0.665, 0, 32.07641, -528.7848)
+transform = Transform3D(0.665, 0, 0, 0, 0.665, 0, 0, 0, 0.665, -0.13592625, 1.8519125, -4.216465)
 
 [node name="Camera3D" type="Camera3D" parent="CharacterBody3D"]
 transform = Transform3D(1.5037594, 0, 0, 0, 1.4603523, 0.35869694, 0, -0.35869694, 1.4603523, 0.1716214, 10.555698, 11.744202)
@@ -2780,7 +2794,7 @@ shape = SubResource("CylinderShape3D_i5d5d")
 [node name="saveload" parent="." instance=ExtResource("6_bo0jt")]
 
 [node name="checkpoint" parent="." instance=ExtResource("7_wo13f")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2628222, -1.9073486e-06, -203.1518)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.2628222, 2.999998, -203.1518)
 
 [node name="moeda" parent="." instance=ExtResource("9_i5d5d")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.0351194, 0.19761181, -18.439579)
@@ -3134,7 +3148,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
 shape = SubResource("BoxShape3D_puycu")
 
 [node name="Platforma4decay10" type="MeshInstance3D" parent="plataformas" node_paths=PackedStringArray("platforma_4_decay", "collision_shape_3d", "area_3d")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99558854, 30.197655, -640.6458)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99558854, 28.719254, -640.6458)
 layers = 129
 mesh = SubResource("ArrayMesh_7oclo")
 skeleton = NodePath("")
@@ -3153,6 +3167,29 @@ shape = SubResource("ConcavePolygonShape3D_pfgfe")
 [node name="Area3D" type="Area3D" parent="plataformas/Platforma4decay10"]
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay10/Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
+shape = SubResource("BoxShape3D_puycu")
+
+[node name="Platforma4decay11" type="MeshInstance3D" parent="plataformas" node_paths=PackedStringArray("platforma_4_decay", "collision_shape_3d", "area_3d")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.99558854, 40.963684, -640.6458)
+layers = 129
+mesh = SubResource("ArrayMesh_7oclo")
+skeleton = NodePath("")
+script = ExtResource("12_3ish3")
+intensidade_vibracao = 3.0
+eixo_vibracao = Vector3(0.05, 0, 0)
+platforma_4_decay = NodePath(".")
+collision_shape_3d = NodePath("StaticBody3D/CollisionShape3D")
+area_3d = NodePath("Area3D")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="plataformas/Platforma4decay11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay11/StaticBody3D"]
+shape = SubResource("ConcavePolygonShape3D_pfgfe")
+
+[node name="Area3D" type="Area3D" parent="plataformas/Platforma4decay11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="plataformas/Platforma4decay11/Area3D"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.10000019, 5, 0)
 shape = SubResource("BoxShape3D_puycu")
 
@@ -3739,6 +3776,8 @@ skeleton = NodePath("")
 
 [node name="coquinho" type="CharacterBody3D" parent="." node_paths=PackedStringArray("ponto_de_tiro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.734537, 18.545765, -361.4333)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("13_843sb")
 projetil = ExtResource("14_dww6m")
 ponto_de_tiro = NodePath("Marker3D")
@@ -3852,6 +3891,8 @@ mesh = SubResource("CapsuleMesh_uhglm")
 
 [node name="coquinho2" type="CharacterBody3D" parent="." node_paths=PackedStringArray("ponto_de_tiro")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.734537, 107.808716, -683.6544)
+collision_layer = 5
+collision_mask = 5
 script = ExtResource("13_843sb")
 projetil = ExtResource("14_dww6m")
 ponto_de_tiro = NodePath("Marker3D")
@@ -4205,6 +4246,12 @@ transform = Transform3D(1.1464113e-14, 2.6226832e-07, 6, 6, -2.6226832e-07, 0, 2
 [node name="Wall_Full_x2_Door11" parent="fase2" instance=ExtResource("20_gerfo")]
 transform = Transform3D(1.1988229e-07, 2.3326575e-07, 6, 5.3364983, -2.742587, 0, 2.742587, 5.3364983, -2.6226832e-07, 2.0770817, 61.028835, -737.7527)
 
+[node name="StaticBody3D" type="StaticBody3D" parent="fase2/Wall_Full_x2_Door11"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="fase2/Wall_Full_x2_Door11/StaticBody3D"]
+transform = Transform3D(2.9802322e-08, 0.9999986, 0, -0.9999986, 2.9802322e-08, 3.5527137e-15, -3.907985e-14, 1.4210855e-14, 0.99999887, -0.5136337, -1.2885132, -5.2762823)
+shape = SubResource("BoxShape3D_0lt24")
+
 [node name="Wall_Full_x2_Door12" parent="fase2" instance=ExtResource("20_gerfo")]
 transform = Transform3D(-8.970106e-08, 2.464516e-07, 6, 5.638156, 2.052121, 0, -2.052121, 5.638156, -2.6226832e-07, 2.0770817, 61.028835, -703.7434)
 
@@ -4423,7 +4470,41 @@ shape = SubResource("SphereShape3D_qefhr")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("31_ydiuj")
+volume_db = -25.679
 autoplay = true
+
+[node name="passos" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("32_qefhr")
+
+[node name="powerup" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("33_jygj8")
+
+[node name="tutorial1" type="Label3D" parent="."]
+transform = Transform3D(2.685, 0, 0, 0, 2.685, 0, 0, 0, 2.685, 4.292511, 9.152584, -5.407593)
+billboard = 1
+text = "MOVA-SE USANDO O ANALÓGICO ESQUERDO 
+OU W,A,S,D"
+font_size = 64
+uppercase = true
+autowrap_mode = 3
+
+[node name="tutorial2" type="Label3D" parent="."]
+transform = Transform3D(3.975, 0, 0, 0, 3.975, 0, 0, 0, 3.975, 0.35680294, 9.15922, -76.18808)
+billboard = 1
+text = "PULE NO ESPAÇO 
+OU
+A DO JOYSTICK"
+font_size = 64
+autowrap_mode = 3
+
+[node name="tutorial3" type="Label3D" parent="."]
+transform = Transform3D(2.98, 0, 0, 0, 2.98, 0, 0, 0, 2.98, -2.859, 6.346, -32.628)
+billboard = 1
+text = "ATAQUE COM O J
+OU
+R1 DO JOYSTICK"
+font_size = 64
+autowrap_mode = 3
 
 [connection signal="area_entered" from="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/Area3D" to="criatura" method="_on_area_3d_area_entered"]
 [connection signal="body_entered" from="criatura/Path3D/PathFollow3D/SpringArm3D/pivot/Area3D" to="criatura" method="_on_area_3d_body_entered"]
@@ -4443,6 +4524,7 @@ autoplay = true
 [connection signal="body_entered" from="plataformas/Platforma4decay7/Area3D" to="plataformas/Platforma4decay7" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="plataformas/Platforma4decay8/Area3D" to="plataformas/Platforma4decay8" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="plataformas/Platforma4decay10/Area3D" to="plataformas/Platforma4decay10" method="_on_area_3d_body_entered"]
+[connection signal="body_entered" from="plataformas/Platforma4decay11/Area3D" to="plataformas/Platforma4decay11" method="_on_area_3d_body_entered"]
 [connection signal="body_entered" from="plataformas/Platforma4decay9/Area3D" to="plataformas/Platforma4decay9" method="_on_area_3d_body_entered"]
 [connection signal="area_entered" from="coquinho/levardano" to="coquinho" method="_on_levardano_area_entered"]
 [connection signal="area_entered" from="coquinho2/levardano" to="coquinho2" method="_on_levardano_area_entered"]

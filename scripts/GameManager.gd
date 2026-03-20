@@ -28,20 +28,23 @@ func _process(delta: float) -> void:
 	pass
 func morrer():
 	get_tree().change_scene_to_file("res://cenas/teladerrota.tscn")
-	
+	reset()
 func addvida(quantidade: int):
 	
 	if vida_atual <= vida_maxima:
 		vida_atual += 1
 	
 	pass
-
+func reset():
+	vida_atual = vida_maxima
+	pontos = 0
 func addponto(quantidade: int):
 	pontos += 1
 	pass
 
 func levardano(quantidade: int):
 	vida_atual -= 1
+	Input.start_joy_vibration(0,0.5,1.0,1.0)
 	if vida_atual <= 0:
 		morrer()
 		pass

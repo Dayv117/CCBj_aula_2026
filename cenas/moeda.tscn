@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://rae8eqege0qg"]
+[gd_scene load_steps=6 format=3 uid="uid://rae8eqege0qg"]
 
 [ext_resource type="Script" uid="uid://px5u63d6k4io" path="res://scripts/moeda.gd" id="1_5k251"]
+[ext_resource type="AudioStream" uid="uid://wluk0inuk0cp" path="res://assets/sons/powerup.wav" id="2_ld1q8"]
 
 [sub_resource type="SphereMesh" id="SphereMesh_u3d6r"]
 
@@ -25,7 +26,7 @@ script = ExtResource("1_5k251")
 mesh = SubResource("SphereMesh_u3d6r")
 skeleton = NodePath("")
 
-[node name="Area3D" type="Area3D" parent="."]
+[node name="Area3D" type="Area3D" parent="." groups=["persist"]]
 collision_layer = 3
 collision_mask = 3
 
@@ -34,5 +35,8 @@ shape = SubResource("SphereShape3D_5k251")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 shape = SubResource("SphereShape3D_ld1q8")
+
+[node name="coleta" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("2_ld1q8")
 
 [connection signal="area_entered" from="Area3D" to="." method="Coletar"]

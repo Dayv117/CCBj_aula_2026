@@ -35,6 +35,8 @@ func _process(delta: float) -> void:
 		pode_atirar = true
 	if vida <= 0:
 		$AnimationPlayer.play("death")
+		queue_free()
+		print
 	pass
 	
 func _ao_jogador_entrar(body: Node3D):

@@ -3367,17 +3367,19 @@ offset_bottom = 40.0
 
 [node name="Label" type="Label" parent="Control"]
 layout_mode = 0
-offset_left = 94.0
-offset_top = 54.0
-offset_right = 134.0
-offset_bottom = 77.0
-text = "Torre"
+offset_left = 68.0
+offset_top = 52.0
+offset_right = 184.0
+offset_bottom = 75.0
+text = "Torre da Ilusão"
 
 [node name="CanvasLayer" type="CanvasLayer" parent="Control"]
 
 [node name="ColorRect" type="ColorRect" parent="Control/CanvasLayer"]
-offset_right = 268.0
-offset_bottom = 227.0
+offset_left = -3.0
+offset_top = -4.0
+offset_right = 265.0
+offset_bottom = 223.0
 color = Color(0, 0, 0, 1)
 
 [node name="Button" type="Button" parent="Control/CanvasLayer/ColorRect"]
@@ -3386,7 +3388,8 @@ offset_left = 89.0
 offset_top = 132.0
 offset_right = 148.0
 offset_bottom = 163.0
-text = "JOJAR"
+text = "Jogar
+"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Control/CanvasLayer"]
 libraries = {

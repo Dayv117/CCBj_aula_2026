@@ -1,7 +1,7 @@
 extends CharacterBody3D
 
 
-const SPEED = 10.0
+const SPEED = 7.5
 const JUMP_VELOCITY = 10
 @onready var piv: Node3D = $piv
 @onready var anim: AnimationPlayer = $piv/buddybuddy/AnimationPlayer
@@ -34,7 +34,7 @@ func _physics_process(delta: float) -> void:
 		
 		
 		atacando = false
-	if Input.is_action_just_pressed("pulo"):
+	if Input.is_action_just_pressed("pulo") and is_on_floor():
 		anim.play("Jump")
 		velocity.y = JUMP_VELOCITY
 	#if Input.is_action_just_pressed("resetar checkpoint"):
@@ -62,7 +62,11 @@ func animation(delta):
 			if Input.is_action_pressed("frente"):
 				andando = true
 				anim.play("Walk")
+				
+				
 				num_rotacao = deg_to_rad(0)
+				if $passos.playing == false:
+					$passos.play()
 				if Input.is_action_pressed("esquerda"):
 					num_rotacao = deg_to_rad(45)
 				elif Input.is_action_pressed("direita"):
@@ -71,6 +75,7 @@ func animation(delta):
 			elif Input.is_action_pressed("atras"):
 				andando = true
 				anim.play("Walk")
+				
 				num_rotacao = deg_to_rad(180)
 				if Input.is_action_pressed("esquerda"):
 					num_rotacao = deg_to_rad(135)
@@ -80,11 +85,13 @@ func animation(delta):
 			elif Input.is_action_pressed("esquerda"):
 				andando = true
 				anim.play("Walk")
+				
 				num_rotacao = deg_to_rad(90)
 				rotacionar(delta)
 			elif Input.is_action_pressed("direita"):
 				andando = true
 				anim.play("Walk")
+				
 				num_rotacao = deg_to_rad(-90)
 				rotacionar(delta)
 			else:

@@ -15,6 +15,7 @@ func Coletar(enterNode: Area3D) -> void:
 	queue_free()
 	print("pegou")
 	GameManager.addponto(1)
+	$coleta.play()
 
 
 
